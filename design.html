@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>jeffWelling/libpeerfinder @ GitHub</title>
+
+<style type="text/css">
+body {
+margin-top: 1.0em;
+background-color: #000000;
+font-family: "Helvetica,Arial,FreeSans"; color: #ffffff;
+}
+#container {
+margin: 0 auto;
+width: 700px;
+}
+h1 { font-size: 3.8em; color: #ffffff; margin-bottom: 3px; }
+h1 .small { font-size: 0.4em; }
+h1 a { text-decoration: none }
+h2 { font-size: 1.5em; color: #ffffff; }
+h3 { text-align: center; color: #ffffff; }
+a { color: #ffffff; }
+.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+.download { float: right; }
+pre { background: #000; color: #fff; padding: 15px;}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.footer { text-align:center; padding-top:30px; font-style: italic; }
+</style>
+</head><body>
+<a href="http://github.com/jeffWelling/libpeerfinder"><img style="border: 0pt none ; position: absolute; top: 0pt; right: 0pt;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<div id="container">
+<h1>Design</h1>
+<p>&nbsp;</p>Theres a few things we want to keep in mind when we are
+designing this. &nbsp;We want to make extensive use of plugins where
+ever possible. &nbsp;It will be designed so that the swarms that it
+looks for are defined by plugins from the beginning, so all you have to
+do to be able to connect to a new swarm is add/write a plugin for it.
+&nbsp;It comes with some desireable defaults, such as one to help with
+connecting to trackers, and one for DHTs for torrents.<br><br>Another
+area that will be modular like the swarm definitions is the methods
+that it uses to find peers. &nbsp;It will of course come with several
+defaults such as broadcasting, specialized network scanning to identify
+hosts that you are close to topologically, and IRC, but will also allow
+for additional methods of locating peers to be defined by writing a
+plugin with a few specific hooks.<br><br><p>Additional design suggestions are welcome.</p>
+<p>&nbsp; </p>
+<p align="center"><a href="index.html">libpeerfinder</a></p>
+</div>
+</body></html>
