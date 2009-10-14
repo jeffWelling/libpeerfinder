@@ -23,8 +23,7 @@ a { color: #000000; }
 pre { background: #fff; color: #000; padding: 15px;}
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .footer { text-align:center; padding-top:30px; font-style: italic; }
-</style>
-</head>
+</style></head>
 <body>
 <a href="http://github.com/jeffWelling/libpeerfinder"><img style="border: 0pt none ; position: absolute; top: 0pt; right: 0pt;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 <div id="container">
@@ -90,7 +89,44 @@ probably come together as a plugin for the cilent which would help
 locate DHTs, so that if every tracker for a torrent was down you could
 still find a peer who was hosting a DHT to connect to. &nbsp;At
 which point you would have access to the whole network through the
-magic of DHTs.<br>
+magic of DHTs.<br><br>A
+requirement for swarms that libpeerfinder can help you locate is that
+peers in the swarm must be able to help you locate other peers.
+&nbsp;As long as this is possible, it should be possible to use
+libpeerfinder to help connect to the swarm.<br>The reason for this
+requirement is that not everyone in the swarm will be running the
+libpeerfinder daemon. &nbsp;One of the important design decisions is to
+be able to use one swarm to help locate another swarm. &nbsp;To help
+illustrate this, suppose that we have two swarms, one called 'dht'
+which are a bunch of bit torrent clients with DHT support which may or
+may not be running the libpeerfinder daemon, and another swarm called
+'limewire' which is a bunch of limewire clients which also may or may
+not be running the daemon. &nbsp;Suppose that this is the first time
+that you've used libpeerfinder to connect to the dht swarm, but you
+have used it to connect to the limewire swarm so it knows about that
+one and has a list of its peers. &nbsp;Also suppose that you have a
+libpeerfinder plugin for you bit torrent client. &nbsp;Now, in our
+theoretical scenario you go to a torrent index such as piratebay or
+isohunt and download a .torrent file for some creative commons licensed
+album. &nbsp;Then you go to open up the torrent file in your torrent
+client, but it turns out that non of the trackers are online anymore,
+and since you've never connected to any torrents before you don't have
+any way of connecting to the swarm. &nbsp;This is where libpeerfinder
+comes in, the plugin in your client should at this point query
+libpeerfinder for a list of peers in the 'dht' swarm. &nbsp;But then
+because it's never seen that swarm before, but has seen thelimewire
+swarm, it begins looking for a peer in the limewire swarm who is
+running a contactable libpeerfinder daemon. &nbsp;If it cannot find a
+peer who is serving the libpeerfinder service (running the daemon) then
+it falls back to the other discovery methods, otherwise it will query
+that libpeerfinder service that it found for the dht swarm. &nbsp;If
+the service responds with not-found then it records that peers IP in
+the list of known libpeerfinder services and continues crawling the
+limewire swarm. &nbsp;If every service in the limewire swarm responds
+with not-found then it moves on to phase two; querying each known
+libpeerfinder service for their list of known swarms, and then queries
+for a list of known peers in each of those swarms, and begins again
+scanning the new swarm.<br><br>
 <br>
 <p>Additional design suggestions are welcome.</p>
 <p>&nbsp; </p>
