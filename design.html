@@ -23,60 +23,92 @@ a { color: #ffffff; }
 pre { background: #000; color: #fff; padding: 15px;}
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .footer { text-align:center; padding-top:30px; font-style: italic; }
-</style></head>
+</style>
+</head>
 <body>
 <a href="http://github.com/jeffWelling/libpeerfinder"><img style="border: 0pt none ; position: absolute; top: 0pt; right: 0pt;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 <div id="container">
 <h1>Design</h1>
-<p>&nbsp;</p>Theres a few things we want to keep in mind when we are
-designing this. &nbsp;We want to make extensive use of plugins where
+<p>&nbsp;</p>
+Theres a few things we want to keep in mind when we are
+designing this. &nbsp;We want to make extensive use of plugins
+where
 ever possible. &nbsp;It will be designed so that the swarms that it
 looks for are defined by plugins from the beginning, so all you have to
 do to be able to connect to a new swarm is add/write a plugin for it.
-&nbsp;It comes with some desireable defaults, such as one to help with&nbsp;DHTs for torrents. &nbsp;<br>Its
-important to remember thought that it would work for DHTs but not for
-trackers because trackers don't track each other they only track peers;
-DHTs track each other so you can query one DHT to get information about
-it's neighbors to connect to. &nbsp;If you were to try to use
-libpeerfinder for say, torrent trackers, you might be able to get it to
-return a list of some trackers, but those trackers might not have the
-torrents your looking for and if they didn't they wouldn't be of any
-help to you because they wouldn't help you locate additonal trackers.<br><br>Another
+&nbsp;It comes with some desireable defaults, such as one to help
+with&nbsp;DHTs for torrents. &nbsp;<br>
+Its important to remember thought that it would work for DHTs but not
+for trackers because trackers don't track each other they only track
+peers; DHTs track each other so you can query one DHT to get
+information about it's neighbors to connect to. &nbsp;If you were
+to try to use libpeerfinder for say, torrent trackers, you might be
+able to get it to return a list of some trackers, but those trackers
+might not have the torrents your looking for and if they didn't they
+wouldn't be of any help to you because they wouldn't help you locate
+additonal trackers.<br>
+<br>
+Another
 area that will be modular like the swarm definitions is the methods
-that it uses to find peers. &nbsp;It will of course come with several
+that it uses to find peers. &nbsp;It will of course come with
+several
 defaults such as broadcasting, specialized network scanning to identify
 hosts that you are close to topologically, and IRC, but will also allow
 for additional methods of locating peers to be defined by writing a
-plugin with a few specific hooks.<br><br><br>The
-idea is, you install the application and by default, is configured to
-spawn a daemon if there is not one already spawned, and then to query
-that daemon instead of other peers - but it can also be used sans
-daemon from the command line. &nbsp;The daemon's job is to help speed
-up the response time when a call to libpeerfinder is made by actively
-maintaining it's tables/lists of peers. &nbsp;Disabling the daemon and
-running from the command line make it look for a list of known peers
-from previous searches, and try to query them. &nbsp;If there is no
-list of known peers, such as would be the case on a first run after
-installation, or if none of the peers in the list are contactable, it
-goes to the peerfinding plugins to begin hunting for a peer.<br><br>To
-use an analogy, having the daemon running is like having a library in
-your own town. &nbsp;You can go to the library and ask the librarian
-for everything pertaining to X, and they will give you the list right
-then and right there because they've been keeping the library up to
-date and stocked with books (lists of peers). &nbsp;Where as not
-running the daemon would be like having to send a letter to the
-neighboring town's librarian to ask for a list of everything pertaining
-to X, and they would send the response back to you in a letter. &nbsp;<br>To
-use the analogy to give an idea of what is meant by 'definable swarms',
-you would ask the librarian for a list of peers from the 'dht' section
-and you would get a list of peers (selected at random) which are dhts.<br><br>If
-you were to implement libpeerfinder with a torrent client it would
+plugin with a few specific hooks.<br>
+<br>
+<br>
+The idea is, you install the application and by default, is configured
+to spawn a daemon if there is not one already spawned, and then to
+query that daemon instead of other peers - but it can also be used sans
+daemon from the command line. &nbsp;The daemon's job is to help
+speed up the response time when a call to libpeerfinder is made by
+actively maintaining it's tables/lists of peers. &nbsp;Disabling
+the daemon and running from the command line make it look for a list of
+known peers from previous searches, and try to query them. &nbsp;If
+there is no list of known peers, such as would be the case on a first
+run after installation, or if none of the peers in the list are
+contactable, it goes to the peerfinding plugins to begin hunting for a
+peer.<br>
+<br>
+To use an analogy, having the daemon running is like having a library
+in your own town. &nbsp;You can go to the library and ask the
+librarian for everything pertaining to X, and they will give you the
+list right then and right there because they've been keeping the
+library up to date and stocked with books (lists of peers).
+&nbsp;Where as not running the daemon would be like having to send
+a letter to the neighboring town's librarian to ask for a list of
+everything pertaining to X, and they would send the response back to
+you in a letter. &nbsp;<br>
+To use the analogy to give an idea of what is meant by 'definable
+swarms', you would ask the librarian for a list of peers from the 'dht'
+section and you would get a list of peers (selected at random) which
+are dhts.<br>
+<br>
+If you were to implement libpeerfinder with a torrent client it would
 probably come together as a plugin for the cilent which would help
 locate DHTs, so that if every tracker for a torrent was down you could
-still find a peer who was hosting a DHT to connect to. &nbsp;At which
-point you would have access to the whole network through the magic of
-DHTs.<br><br><p>Additional design suggestions are welcome.</p>
+still find a peer who was hosting a DHT to connect to. &nbsp;At
+which point you would have access to the whole network through the
+magic of DHTs.<br>
+<br>
+<p>Additional design suggestions are welcome.</p>
 <p>&nbsp; </p>
 <p align="center"><a href="index.html">libpeerfinder</a></p>
 </div>
+<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/libpeerfinder/embed.js"></script><noscript><a href="http://disqus.com/forums/libpeerfinder/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+var links = document.getElementsByTagName('a');
+var query = '?';
+for(var i = 0; i < links.length; i++) {
+if(links[i].href.indexOf('#disqus_thread') >= 0) {
+query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+}
+}
+document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/libpeerfinder/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
 </body></html>

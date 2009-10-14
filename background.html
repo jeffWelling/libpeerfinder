@@ -1,55 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>jeffWelling/libpeerfinder @ GitHub</title>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-	<title>jeffWelling/libpeerfinder @ GitHub</title>
-	
-	<style type="text/css">
-		body {
-  		margin-top: 1.0em;
-  		background-color: #000000;
-		  font-family: "Helvetica,Arial,FreeSans"; 
-  		color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-		h1 { font-size: 3.8em; color: #ffffff; margin-bottom: 3px; }
-		h1 .small { font-size: 0.4em; }
-		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #ffffff; }
-    h3 { text-align: center; color: #ffffff; }
-    a { color: #ffffff; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-		pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-	</style>
-	
+<style type="text/css">
+body {
+margin-top: 1.0em;
+background-color: #000000;
+font-family: "Helvetica,Arial,FreeSans"; color: #ffffff;
+}
+#container {
+margin: 0 auto;
+width: 700px;
+}
+h1 { font-size: 3.8em; color: #ffffff; margin-bottom: 3px; }
+h1 .small { font-size: 0.4em; }
+h1 a { text-decoration: none }
+h2 { font-size: 1.5em; color: #ffffff; }
+h3 { text-align: center; color: #ffffff; }
+a { color: #ffffff; }
+.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+.download { float: right; }
+pre { background: #000; color: #fff; padding: 15px;}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.footer { text-align:center; padding-top:30px; font-style: italic; }
+</style>
 </head>
 
+
 <body>
-  <a href="http://github.com/jeffWelling/libpeerfinder"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-  
+<a href="http://github.com/jeffWelling/libpeerfinder"><img style="border: 0pt none ; position: absolute; top: 0pt; right: 0pt;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 <div id="container">
-  <h1>Background</h1>
-
-  <p>&nbsp;</p>
-  <p>When you download a bit torrent file, you download basically a file which contains a hash of the file your looking for, and a list of places to go to in order to initially connect to the swarm.  The weak point in this link is the initial connection to the swarm. If someone wanted to take down the torrent, all they have to do is go for the trackers that are listed in the  .torrent file.</p>
-  <p>This is mitigated in torrrents with the use of DHTs, but you still need clients to connect to initially in order to query them for the peers they know of. If you've never connected to the network before, you may not even have a list of peers from your last session to try and connect to. This is demonstrated in the Limewire shutdown </p>
-  <p>This is where libpeerfinder comes in. To continue our bit torrent example, bit torrent uses trackers and DHTs (we're pretending thats all it really uses for the purposes of this example) to locate other peers that have the same .torrent file that your looking for. So, you, or your torrent client, or a torrent client plugin even, would call libpeerfinder with the torrent command line, and it would return a list of appropriate IPs to try connecting to as trackers and or DHTs.</p>
-  <p>Without getting rid of that one last single point of failure, we don't have a truely decentralized system, and thats what libpeerfinder is intended to help with. If a method of finding that first peer is available in library form and also as a command line program, then that opens up the option of true decentralization for other developers of other peer to peer systems and protocols.</p>
-  <p>We are trying to eliminate the need for a bootstrapping node. http://en.wikipedia.org/wiki/Bootstrapping_node</p>
-  <p>&nbsp;</p>
-  <p>&nbsp; </p>
-  <p align="center"><a href="index.html">libpeerfinder</a></p>
+<h1>Background</h1>
+<p>&nbsp;</p>
+<p>When you download a bit torrent file, you download basically a
+file which contains a hash of the file your looking for, and a list of
+places to go to in order to initially connect to the swarm. The weak
+point in this link is the initial connection to the swarm. If someone
+wanted to take down the torrent, all they have to do is go for the
+trackers that are listed in the .torrent file.</p>
+<p>This is mitigated in torrrents with the use of DHTs, but you
+still need clients to connect to initially in order to query them for
+the peers they know of. If you've never connected to the network
+before, you may not even have a list of peers from your last session to
+try and connect to. This is demonstrated in the Limewire shutdown </p>
+<p>This is where libpeerfinder comes in. To continue our bit
+torrent example, bit torrent uses trackers and DHTs (we're pretending
+thats all it really uses for the purposes of this example) to locate
+other peers that have the same .torrent file that your looking for. So,
+you, or your torrent client, or a torrent client plugin even, would
+call libpeerfinder with the torrent command line, and it would return a
+list of appropriate IPs to try connecting to as trackers and or DHTs.</p>
+<p>Without getting rid of that one last single point of failure,
+we don't have a truely decentralized system, and thats what
+libpeerfinder is intended to help with. If a method of finding that
+first peer is available in library form and also as a command line
+program, then that opens up the option of true decentralization for
+other developers of other peer to peer systems and protocols.</p>
+<p>We are trying to eliminate the need for a bootstrapping node.
+http://en.wikipedia.org/wiki/Bootstrapping_node</p>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+<p align="center"><a href="index.html">libpeerfinder</a></p>
 </div>
-
-  
-</body>
-</html>
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/libpeerfinder/embed.js"></script>
+<noscript><a
+href="http://disqus.com/forums/libpeerfinder/?url=ref">View the
+discussion thread.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog
+comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+var links = document.getElementsByTagName('a');
+var query = '?';
+for(var i = 0; i < links.length; i++) {
+if(links[i].href.indexOf('#disqus_thread') >= 0) {
+query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+}
+}
+document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/libpeerfinder/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+</body></html>
