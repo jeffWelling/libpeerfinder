@@ -5,22 +5,22 @@
 <style type="text/css">
 body {
 margin-top: 1.0em;
-background-color: #000000;
-font-family: "Helvetica,Arial,FreeSans"; color: #ffffff;
+background-color: #ffffff;
+font-family: "Helvetica,Arial,FreeSans"; color: #000000;
 }
 #container {
 margin: 0 auto;
 width: 700px;
 }
-h1 { font-size: 3.8em; color: #ffffff; margin-bottom: 3px; }
+h1 { font-size: 3.8em; color: #000000; margin-bottom: 3px; }
 h1 .small { font-size: 0.4em; }
 h1 a { text-decoration: none }
-h2 { font-size: 1.5em; color: #ffffff; }
-h3 { text-align: center; color: #ffffff; }
-a { color: #ffffff; }
+h2 { font-size: 1.5em; color: #000000; }
+h3 { text-align: center; color: #000000; }
+a { color: #000000; }
 .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
 .download { float: right; }
-pre { background: #000; color: #fff; padding: 15px;}
+pre { background: #fff; color: #000; padding: 15px;}
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .footer { text-align:center; padding-top:30px; font-style: italic; }
 </style>
@@ -30,18 +30,18 @@ hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 <div id="container">
 <h1>Usage</h1>
 <p>&nbsp;</p>
-<span style="color: rgb(233, 233, 233);">There are two
-primary ways of using libpeerfinder</span><span style="color: rgb(253, 253, 253);">. &nbsp;You can
+<span style="color: black;">There are two
+primary ways of using libpeerfinder</span><span style="color: black;">. &nbsp;You can
 execute it from the command line, like this;</span><br>
-<p style="background-color: rgb(55, 65, 55);">&nbsp;<span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;">$
+<p style="background-color: rgb(224, 235, 224);">&nbsp;<span style="color: black; font-family: Tlwg Typist;">$
 ./libpeerfinder -tracker</span></p>
-<span style="color: rgb(253, 253, 253);">And it would
+<span style="color: black;">And it would
 return a ("\n" seperated) list of IPs that you could query for torrents,<br>
 Or you could use</span>
-<p style="background-color: rgb(55, 65, 55);">&nbsp;<span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;">$
+<p style="background-color: rgb(224, 235, 224);">&nbsp;<span style="color: black; font-family: Tlwg Typist;">$
 ./libpeerfinder -torrentdht</span></p>
-<p> <span style="color: rgb(253, 253, 253);">And it
-would return a list of IPs </span><span style="color: rgb(253, 253, 253);">that
+<p> <span style="color: black;">And it
+would return a list of IPs </span><span style="color: black;">that
 are known to host
 DHTs for torrents. &nbsp;For a complete list of the plugins
 available
@@ -49,17 +49,17 @@ to your instance of libpeerfinder, use `./libpeerfinder -h` .
 &nbsp;The
 expected output from the above two
 examples is in the format of;</span></p>
-<p style="background-color: rgb(55, 65, 55);">&nbsp;<span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;">$
+<p style="background-color: rgb(224, 235, 224);">&nbsp;<span style="color: black; font-family: Tlwg Typist;">$
 ./libpeerfinder -torrentdht</span></p>
-<p style="background-color: rgb(55, 65, 55);">&nbsp;<span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;">192.168.0.1</span></p>
-<p style="background-color: rgb(55, 65, 55);"><span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;">192.168.0.2</span></p>
-<p style="background-color: rgb(55, 65, 55);"><span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;">192.168.0.3</span></p>
-<p style="background-color: rgb(55, 65, 55);"><span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;">192.167.3.4</span></p>
-<p style="background-color: rgb(55, 65, 55);"><span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;">...</span></p>
-<span style="color: rgb(253, 252, 252);"><br>
+<p style="background-color: rgb(224, 235, 224);">&nbsp;<span style="color: black; font-family: Tlwg Typist;">192.168.0.1</span></p>
+<p style="background-color: rgb(224, 235, 224);"><span style="color: black; font-family: Tlwg Typist;">192.168.0.2</span></p>
+<p style="background-color: rgb(224, 235, 224);"><span style="color: black; font-family: Tlwg Typist;">192.168.0.3</span></p>
+<p style="background-color: rgb(224, 235, 224);"><span style="color: black; font-family: Tlwg Typist;">192.167.3.4</span></p>
+<p style="background-color: rgb(224, 235, 224);"><span style="color: black; font-family: Tlwg Typist;">...</span></p>
+<span style="color: black;"><br>
 The altnerative to using it from the command line would be to hook
 into the library itself. &nbsp;It's interface is published here on <a href="http://rdoc.info/projects/jeffWelling/libpeerfinder">rdoc.info</a>
-.</span><span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;"></span><span style="color: rgb(253, 253, 253); font-family: Tlwg Typist;"></span>
+.</span><span style="color: black; font-family: Tlwg Typist;"></span><span style="color: black; font-family: Tlwg Typist;"></span>
 <p align="center"><a href="index.html">libpeerfinder</a></p>
 </div>
 <div id="disqus_thread"></div>
